@@ -1,10 +1,12 @@
 
 /**
- * Write a description of class Main here.
+ * Random guessing game
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Robert)
+ * @version (5/21/19)
  */
+
+import java.util.Scanner;
 public class Main
 {
     // instance variables - replace the example below with your own
@@ -15,19 +17,55 @@ public class Main
      */
     public Main()
     {
-        // initialise instance variables
-        x = 0;
-    }
+        
+   
+        Scanner in = new Scanner(System.in);
+        double correctAnswer = Math.round((Math.random() * 10)+ 1);
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        boolean guessWrong = true;
+        int guessCounter = 0;
+        double perviousInput = 0;
+        
+        while(guessWrong) {
+            
+            System.out.println("Guess and number bewteen 1-10");
+            double userInput = in.nextInt();
+             
+            //output reposnse 
+            if (userInput != perviousInput) {
+                guessCounter++;
+            }
+            
+            //Store Current guess in to perviousInput
+            perviousInput = userInput;
+            
+             if (userInput < 0 || userInput > 10 ) {
+           
+            } else if(userInput == correctAnswer) {
+                System.out.println("correct guess");
+                System.out.println("Number of Guesses: " + guessCounter);
+                guessWrong = false;
+                
+            } else if (userInput < correctAnswer) {
+                System.out.println("Too small");
+               
+            } else if (userInput > correctAnswer) {
+                System.out.println("Too large");
+               
+            } else {
+                System.out.println("Error");
+                break;
+                
+            }
+ 
+            
+            
+            
+            
+           
+            
+
     }
+}
+    
 }
